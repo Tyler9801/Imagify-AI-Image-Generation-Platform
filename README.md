@@ -1,23 +1,23 @@
 🚀 Imagify — AI Image Generation Platform
 
-Imagify is a full-stack AI SaaS-style web application that allows users to generate images using AI prompts, manage usage credits, and track generation history.
-The platform is built with a modern React frontend, a secure Node.js/Express backend, and MongoDB for persistent storage.
+Imagify is a full-stack AI SaaS web application that allows users to generate images from prompts, manage usage credits, and track generation history.
 
-🌐 Live Application
+Built with a modern React frontend, a secure Node.js/Express backend, and MongoDB for persistent storage.
 
-Frontend (UI)
-https://imagify-client-htfa.onrender.com
+🌐 Live Demo
+Service	URL
+Frontend (UI)	https://imagify-client-htfa.onrender.com
 
-Backend (API Server)
-https://imagify-server-pdqg.onrender.com
+Backend (API)	https://imagify-server-pdqg.onrender.com
 
-The frontend communicates with the backend via REST APIs. Authentication is handled using JWT, and all protected operations require valid authorization.
+The frontend communicates with the backend via REST APIs.
+Authentication is handled using JWT, and all protected operations require authorization.
 
 🧠 Features
 
-🎨 AI Image generation using prompts
+🎨 AI image generation using prompts
 
-🔐 Secure user authentication (JWT based)
+🔐 Secure JWT authentication
 
 💳 Credit-based usage system
 
@@ -25,7 +25,7 @@ The frontend communicates with the backend via REST APIs. Authentication is hand
 
 👤 User account verification
 
-⚡ Fast modern UI with React + Vite
+⚡ Fast UI built with React + Vite
 
 🌍 Fully deployed production environment
 
@@ -33,7 +33,7 @@ The frontend communicates with the backend via REST APIs. Authentication is hand
 Browser
    ↓
 React Frontend (Render Static Hosting)
-   ↓ REST API Calls
+   ↓ REST API
 Node.js + Express Backend (Render Web Service)
    ↓
 MongoDB Database
@@ -42,7 +42,7 @@ AI Image Generation Provider
 
 📂 Project Structure
 imagify/
-├── client/                 # React + Vite frontend
+├── client/                  # React + Vite frontend
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
@@ -51,7 +51,7 @@ imagify/
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │
-└── server/                 # Node.js + Express backend
+└── server/                  # Node.js + Express backend
     ├── routes/
     ├── controllers/
     ├── models/
@@ -84,9 +84,9 @@ REST API Architecture
 
 🔐 Authentication Flow
 
-User registers/logs in
+User registers or logs in
 
-Server returns JWT token
+Server returns a JWT token
 
 Client stores token
 
@@ -96,17 +96,17 @@ Backend verifies token via middleware
 
 💳 Credit System Logic
 
-Each image generation request:
+For each image generation request:
 
-Checks user credits
+Check user credits
 
-Deducts credits
+Deduct credits
 
-Generates image via AI API
+Generate image via AI API
 
-Stores transaction in database
+Store transaction in database
 
-Returns generated image URL
+Return generated image URL
 
 ⚙️ Local Setup
 Prerequisites
@@ -122,7 +122,7 @@ cd server
 npm install
 
 
-Create .env:
+Create .env
 
 MONGODB_URI=your_database_uri
 JWT_SECRET=your_secret
@@ -139,7 +139,7 @@ cd client
 npm install
 
 
-Create .env:
+Create .env
 
 VITE_API_URL=http://localhost:5000
 
@@ -149,27 +149,23 @@ Run:
 npm run dev
 
 🌍 Production Configuration
-
 Frontend .env
-
 VITE_API_URL=https://imagify-server-pdqg.onrender.com
 
-
 Server .env
-
 CLIENT_URL=https://imagify-client-htfa.onrender.com
 
 📡 API Overview
 User Routes
-POST /api/users/register
-POST /api/users/login
-GET  /api/users/profile
-
+Method	Endpoint	Description
+POST	/api/users/register	Register user
+POST	/api/users/login	Login user
+GET	/api/users/profile	Get user profile
 Image Routes
-POST /api/images/generate
-GET  /api/images/history
-POST /api/images/buy-credits
-
+Method	Endpoint	Description
+POST	/api/images/generate	Generate AI image
+GET	/api/images/history	Fetch generation history
+POST	/api/images/buy-credits	Purchase credits
 🧪 Health Check
 GET https://imagify-server-pdqg.onrender.com/
 
@@ -180,7 +176,7 @@ Server is running
 
 ⚡ Performance Notes
 
-First request may take ~30s (Render cold start)
+First request may take ~30 seconds (Render cold start)
 
 AI generation latency depends on provider response time
 
@@ -188,19 +184,20 @@ Credit system prevents API misuse
 
 🛠️ Future Improvements
 
-Social login (Google/GitHub OAuth)
+Google / GitHub OAuth login
 
 Image style presets
 
-Prompt history suggestions
+Prompt suggestions
 
-Rate limiting per user tier
+Tier-based rate limiting
 
 Stripe subscription billing
 
 🤝 Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss improvements.
+Pull requests are welcome.
+For major changes, please open an issue first to discuss improvements.
 
 📄 License
 
@@ -208,4 +205,4 @@ MIT License
 
 👨‍💻 Author
 
-Developed as a full-stack production project demonstrating authentication, payment logic, API integration, and deployment architecture.
+Full-stack production project demonstrating authentication, billing logic, API integration, and deployment architecture.
