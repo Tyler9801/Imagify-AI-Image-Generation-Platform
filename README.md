@@ -40,6 +40,11 @@ MongoDB Database
    ↓
 AI Image Generation Provider
 
+
+
+
+
+
 📂 Project Structure
 imagify/
 ├── client/                  # React + Vite frontend
@@ -58,6 +63,12 @@ imagify/
     ├── middlewares/
     ├── configs/
     └── server.js
+
+
+
+
+
+    
 
 🧰 Tech Stack
 Frontend
