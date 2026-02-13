@@ -1,205 +1,211 @@
-# Imagify - AI Image Generation Platform
+🚀 Imagify — AI Image Generation Platform
 
-Imagify is a full-stack web application that leverages AI to generate, process, and manage images. It features a modern React frontend, a Node.js/Express backend, and MongoDB for data persistence.
+Imagify is a full-stack AI SaaS-style web application that allows users to generate images using AI prompts, manage usage credits, and track generation history.
+The platform is built with a modern React frontend, a secure Node.js/Express backend, and MongoDB for persistent storage.
 
-## Project Structure
+🌐 Live Application
 
-```
+Frontend (UI)
+https://imagify-client-htfa.onrender.com
+
+Backend (API Server)
+https://imagify-server-pdqg.onrender.com
+
+The frontend communicates with the backend via REST APIs. Authentication is handled using JWT, and all protected operations require valid authorization.
+
+🧠 Features
+
+🎨 AI Image generation using prompts
+
+🔐 Secure user authentication (JWT based)
+
+💳 Credit-based usage system
+
+📜 Image generation history tracking
+
+👤 User account verification
+
+⚡ Fast modern UI with React + Vite
+
+🌍 Fully deployed production environment
+
+🏗️ System Architecture
+Browser
+   ↓
+React Frontend (Render Static Hosting)
+   ↓ REST API Calls
+Node.js + Express Backend (Render Web Service)
+   ↓
+MongoDB Database
+   ↓
+AI Image Generation Provider
+
+📂 Project Structure
 imagify/
-├── client/                 # Frontend application (React + Vite)
+├── client/                 # React + Vite frontend
 │   ├── src/
-│   │   ├── components/     # Reusable React components
-│   │   │   ├── Description.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── GenerateBtn.jsx
-│   │   │   ├── Header.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Steps.jsx
-│   │   │   └── Testimonials.jsx
-│   │   ├── pages/          # Page components
-│   │   │   ├── Home.jsx    # Landing page
-│   │   │   ├── Result.jsx  # Image generation results
-│   │   │   ├── BuyCredit.jsx # Credit purchase page
-│   │   │   └── Verify.jsx  # User verification page
-│   │   ├── context/        # React Context API
-│   │   │   └── AppContext.jsx # Global state management
-│   │   ├── assets/         # Static assets
-│   │   │   └── assets.js
-│   │   ├── App.jsx         # Main App component
-│   │   ├── main.jsx        # Entry point
-│   │   └── index.css       # Global styles
-│   ├── public/             # Static files
-│   ├── package.json        # Dependencies & scripts
-│   ├── vite.config.js      # Vite configuration
-│   ├── tailwind.config.js  # Tailwind CSS configuration
-│   ├── postcss.config.js   # PostCSS configuration
-│   ├── eslint.config.js    # ESLint configuration
-│   └── vercel.json         # Deployment configuration
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── assets/
+│   │   ├── App.jsx
+│   │   └── main.jsx
 │
-└── server/                 # Backend API (Node.js + Express)
-    ├── routes/             # API endpoints
-    │   ├── imageRoutes.js  # Image generation routes
-    │   └── userRoutes.js   # User management routes
-    ├── controllers/        # Business logic
-    │   ├── imageController.js  # Image generation logic
-    │   └── UserController.js   # User management logic
-    ├── models/             # MongoDB schemas
-    │   ├── userModel.js    # User schema and model
-    │   └── transactionModel.js # Transaction history schema
-    ├── middlewares/        # Express middleware
-    │   └── auth.js         # Authentication middleware
-    ├── configs/            # Configuration files
-    │   └── mongodb.js      # MongoDB connection
-    ├── server.js           # Express server entry point
-    ├── package.json        # Dependencies & scripts
-    └── vercel.json         # Deployment configuration
-```
+└── server/                 # Node.js + Express backend
+    ├── routes/
+    ├── controllers/
+    ├── models/
+    ├── middlewares/
+    ├── configs/
+    └── server.js
 
-## Technology Stack
+🧰 Tech Stack
+Frontend
 
-### Frontend
+React 18
 
-- **React 18+** - UI library
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Context API** - State management
+Vite
 
-### Backend
+Tailwind CSS
 
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **MongoDB** - NoSQL database
-- **JWT** - Authentication (implied from auth middleware)
+Context API
 
-## Key Features
+Backend
 
-- 🎨 **AI Image Generation** - Generate images using AI
-- 👤 **User Authentication** - Secure user login and verification
-- 💳 **Credit System** - Purchase and manage credits for image generation
-- 📊 **Transaction Tracking** - Monitor usage history
-- 🎯 **Image Management** - View and manage generated images
+Node.js
 
-## Installation & Setup
+Express.js
 
-### Prerequisites
+MongoDB (Mongoose)
 
-- Node.js (v14 or higher)
-- MongoDB
-- npm or yarn
+JWT Authentication
 
-### Backend Setup
+REST API Architecture
 
-```bash
+🔐 Authentication Flow
+
+User registers/logs in
+
+Server returns JWT token
+
+Client stores token
+
+Protected routes require token in Authorization header
+
+Backend verifies token via middleware
+
+💳 Credit System Logic
+
+Each image generation request:
+
+Checks user credits
+
+Deducts credits
+
+Generates image via AI API
+
+Stores transaction in database
+
+Returns generated image URL
+
+⚙️ Local Setup
+Prerequisites
+
+Node.js (v14+)
+
+MongoDB
+
+npm
+
+Backend Setup
 cd server
 npm install
-```
 
-Create a `.env` file in the `server/` directory with:
 
-```
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-# Add other required environment variables
-```
+Create .env:
 
-Start the server:
+MONGODB_URI=your_database_uri
+JWT_SECRET=your_secret
+AI_API_KEY=your_provider_key
+CLIENT_URL=http://localhost:5173
 
-```bash
+
+Run server:
+
 npm start
-```
 
-### Frontend Setup
-
-```bash
+Frontend Setup
 cd client
 npm install
-```
 
-Create a `.env` file in the `client/` directory with:
 
-```
+Create .env:
+
 VITE_API_URL=http://localhost:5000
-# Add other required environment variables
-```
 
-Start the development server:
 
-```bash
+Run:
+
 npm run dev
-```
 
-## Available Scripts
+🌍 Production Configuration
 
-### Client
+Frontend .env
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+VITE_API_URL=https://imagify-server-pdqg.onrender.com
 
-### Server
 
-- `npm start` - Start the server
-- `npm run dev` - Start with nodemon (if configured)
+Server .env
 
-## API Routes
+CLIENT_URL=https://imagify-client-htfa.onrender.com
 
-### User Routes (`/api/users/`)
+📡 API Overview
+User Routes
+POST /api/users/register
+POST /api/users/login
+GET  /api/users/profile
 
-- Authentication endpoints
-- User profile management
-- Verification endpoints
+Image Routes
+POST /api/images/generate
+GET  /api/images/history
+POST /api/images/buy-credits
 
-### Image Routes (`/api/images/`)
+🧪 Health Check
+GET https://imagify-server-pdqg.onrender.com/
 
-- Image generation
-- Image history
-- Credit management
 
-## Authentication
+Expected response:
 
-The application uses JWT (JSON Web Tokens) for authentication. The `auth.js` middleware handles:
+Server is running
 
-- Token validation
-- User verification
-- Protected route access
+⚡ Performance Notes
 
-## Database Models
+First request may take ~30s (Render cold start)
 
-### User Model
+AI generation latency depends on provider response time
 
-- User credentials and profile information
-- Credit balance
-- Account verification status
+Credit system prevents API misuse
 
-### Transaction Model
+🛠️ Future Improvements
 
-- Usage history
-- Credit transactions
-- Image generation logs
+Social login (Google/GitHub OAuth)
 
-## Deployment
+Image style presets
 
-Both the client and server are configured for Vercel deployment:
+Prompt history suggestions
 
-- Client: `vercel.json` in `/client`
-- Server: `vercel.json` in `/server`
+Rate limiting per user tier
 
-Follow Vercel's documentation for deployment setup.
+Stripe subscription billing
 
-## Contributing
+🤝 Contributing
 
-Contributions are welcome! Please ensure:
+Pull requests are welcome. For major changes, please open an issue first to discuss improvements.
 
-- Code follows the ESLint configuration
-- Components follow React best practices
-- Database operations are properly handled
+📄 License
 
-## License
+MIT License
 
-Specify your project license here.
+👨‍💻 Author
 
-## Support
-
-For issues or questions, please open an issue in the repository.
+Developed as a full-stack production project demonstrating authentication, payment logic, API integration, and deployment architecture.
